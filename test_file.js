@@ -1,7 +1,36 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\margl1440\margr1440\vieww10800\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+//ATTENDANCE REGISTRATION JOB {COMMCARE TO SALESFORCE}
+each(
+  "$.data",
+  upsert("Training_Session__c", "CommCare_Case_Id__c",
+    fields(
+      field("CommCare_Case_Id__c", dataValue("form.selected_training_module")),
+      field("Trainer__c", dataValue("form.trainer")),
+      field("Male_Attendance__c", dataValue("form.Current_session_participants.male_attendance")),
+      field("Female_Attendance__c", dataValue("form.Current_session_participants.female_attendance")),
+      field("Number_in_Attendance__c", dataValue("form.Current_session_participants.total_attendance")),
 
-\f0\fs24 \cf0 Initial commit}
+      field("Date__c", dataValue("form.Current_session_participants.date")),
+      field("Location_GPS__Latitude__s", function(state) {
+          if(dataValue("form.meta.location.#text")(state) !== undefined) {
+            var coordinates = dataValue("form.meta.location.#text")(state).split(' ');
+            return coordinates[0]; 
+          }
+      }),
+      field("Location_GPS__Longitude__s", function(state) {
+          if(dataValue("form.meta.location.#text")(state) !== undefined) {
+            var coordinates = dataValue("form.meta.location.#text")(state).split(' ');
+            return coordinates[1]; 
+          }
+      }),
+      field("Altitude__c", function(state) {
+          if(dataValue("form.meta.location.#text")(state) !== undefined) {
+            var coordinates = dataValue("form.meta.location.#text")(state).split(' ');
+            return coordinates[2]; 
+          }
+      })
+      
+    )
+  )
+);
+
+// Test comment for version control
