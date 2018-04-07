@@ -13,22 +13,24 @@ each(
       field("Location_GPS__Latitude__s", function(state) {
           if(dataValue("form.meta.location.#text")(state) !== undefined) {
             var coordinates = dataValue("form.meta.location.#text")(state).split(' ');
-            return coordinates[0];
+            return coordinates[0]; 
           }
       }),
       field("Location_GPS__Longitude__s", function(state) {
           if(dataValue("form.meta.location.#text")(state) !== undefined) {
             var coordinates = dataValue("form.meta.location.#text")(state).split(' ');
-            return coordinates[1];
+            return coordinates[1]; 
           }
       }),
       field("Altitude__c", function(state) {
           if(dataValue("form.meta.location.#text")(state) !== undefined) {
             var coordinates = dataValue("form.meta.location.#text")(state).split(' ');
-            return coordinates[2];
+            return coordinates[2]; 
           }
       })
-
+      
     )
   )
 );
+
+// Version control
