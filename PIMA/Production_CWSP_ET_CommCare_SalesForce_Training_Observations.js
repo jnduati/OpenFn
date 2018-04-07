@@ -5,14 +5,14 @@ each(
   upsert("Observation__c", "Submission_ID__c",
     fields(
       field("Submission_ID__c", dataValue("id")),
-      field("Observer__c", dataValue("form.observer")),
+      field("Observer__c", dataValue("form.observer")),  
       field("Trainer__c", dataValue("form.trainer_salesforce_id")),
       field("Training_Group__c", dataValue("form.wet_mill")),
       //field("Training_Session__c", dataValue("form.selected_session")),
       field("Training_Session__c", dataValue("form.training_session")),
       field("RecordTypeId", dataValue("form.record_type")),
       field("Date__c", dataValue("form.date")),
-
+      
       field("Male_Participants__c", function(state){
         return parseInt(dataValue("form.Current_session_participants.Male_Participants_In_Attendance")(state));
       }),
@@ -22,36 +22,36 @@ each(
       field("Number_of_Participants__c", function(state){
         return parseInt(dataValue("form.Current_session_participants.Total_Participants_In_Attendance")(state));
       }),
-
+      
       field("Did_Well__c", dataValue("form.Current_Session_Review.Did_Well")),
       field("To_Improve__c", dataValue("form.Current_Session_Review.To_Improve")),
-
+      
       field("Photo_of_Facilitator_URL__c", function(state) {
         var photoUrl = '';
         if(dataValue("form.Photo")(state) !== undefined && dataValue("form.Photo")(state) !== '') {
-          photoUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.Photo")(state);
+          photoUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.Photo")(state);  
         }
         return photoUrl;
       }),
       field("Farmer_Trainer_Signature__c", function(state) {
         var trainerSignatureUrl = '';
         if(dataValue("form.Farmer_Trainer_Signature_Section.Business_Advisor_Signature")(state) !== undefined && dataValue("form.Farmer_Trainer_Signature_Section.Business_Advisor_Signature")(state) !== '') {
-          trainerSignatureUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.Farmer_Trainer_Signature_Section.Business_Advisor_Signature")(state);
+          trainerSignatureUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.Farmer_Trainer_Signature_Section.Business_Advisor_Signature")(state);  
         }
         return trainerSignatureUrl;
       }),
       field("Observer_Signature__c", function(state) {
         var observerSignatureUrl = '';
         if(dataValue("form.Observer_Signature_Section.Observer_Signature")(state) !== undefined && dataValue("form.Observer_Signature_Section.Observer_Signature")(state) !== '') {
-          observerSignatureUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.Observer_Signature_Section.Observer_Signature")(state);
+          observerSignatureUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.Observer_Signature_Section.Observer_Signature")(state);  
         }
         return observerSignatureUrl;
       }),
-
+      
       field("Observation_Location__Latitude__s", function(state) {
 	        if(dataValue("form.gps_information.gps_coordinates")(state) !== undefined && dataValue("form.gps_information.gps_coordinates")(state) !== '') {
 	            var coordinates = dataValue("form.gps_information.gps_coordinates")(state).split(' ');
-	            return coordinates[0];
+	            return coordinates[0]; 
 
           	} else if(dataValue("form.gps_information_retry.gps_coordinates")(state) !== undefined && dataValue("form.gps_information_retry.gps_coordinates")(state) !== ''){
 	            var coordinates = dataValue("form.gps_information_retry.gps_coordinates")(state).split(' ');
@@ -61,7 +61,7 @@ each(
       field("Observation_Location__Longitude__s", function(state) {
 	        if(dataValue("form.gps_information.gps_coordinates")(state) !== undefined && dataValue("form.gps_information.gps_coordinates")(state) !== '') {
 	            var coordinates = dataValue("form.gps_information.gps_coordinates")(state).split(' ');
-	            return coordinates[1];
+	            return coordinates[1]; 
 
           	} else if(dataValue("form.gps_information_retry.gps_coordinates")(state) !== undefined && dataValue("form.gps_information_retry.gps_coordinates")(state) !== ''){
 	            var coordinates = dataValue("form.gps_information_retry.gps_coordinates")(state).split(' ');
@@ -71,20 +71,20 @@ each(
       field("Altitude__c", function(state) {
 	        if(dataValue("form.gps_information.gps_coordinates")(state) !== undefined && dataValue("form.gps_information.gps_coordinates")(state) !== '') {
 	            var coordinates = dataValue("form.gps_information.gps_coordinates")(state).split(' ');
-	            return coordinates[2];
+	            return coordinates[2]; 
 
           	} else if(dataValue("form.gps_information_retry.gps_coordinates")(state) !== undefined && dataValue("form.gps_information_retry.gps_coordinates")(state) !== ''){
 	            var coordinates = dataValue("form.gps_information_retry.gps_coordinates")(state).split(' ');
 	            return coordinates[2];
 	        }
       })
-
+       
     )
   )),
 
 
 //CREATE OBSERVATION RESULTS FOR EACH PARTICIPANT -- PREPARE AND IMPLEMENT SUSTAINABILITY PRACTICE TRAINING
-
+  
 each(
   "$.data",
   upsert("Observation_Result__c", "Submission_ID__c",
@@ -314,7 +314,7 @@ each(
   ))),
 
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -330,7 +330,7 @@ each(
   ))),
 
 each(
-  "$.data",
+  "$.data",   
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -346,7 +346,7 @@ each(
   ))),
 
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -362,7 +362,7 @@ each(
   ))),
 
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -378,7 +378,7 @@ each(
   ))),
 
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -394,7 +394,7 @@ each(
   ))),
 
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -410,7 +410,7 @@ each(
   ))),
 
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -424,3 +424,6 @@ each(
     field("Result__c", dataValue("form.Ratings_and_Comments.Manages_Time")),
     field("Comments__c", dataValue("form.Ratings_and_Comments.Manages_Time_Comments"))
   )));
+  
+  // Version control
+  
