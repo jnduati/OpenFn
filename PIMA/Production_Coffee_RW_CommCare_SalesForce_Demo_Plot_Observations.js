@@ -14,35 +14,35 @@ each(
       field("Demo_Plot_Photo__c", function(state) {
         var dempPlotPhotoUrl = '';
         if(dataValue("form.Demo_Plot_Photo")(state) !== undefined && dataValue("form.Demo_Plot_Photo")(state) !== '') {
-          dempPlotPhotoUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.Demo_Plot_Photo")(state);
+          dempPlotPhotoUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.Demo_Plot_Photo")(state);  
         }
         return dempPlotPhotoUrl;
       }),
-
+      
       field("Observer_Signature__c", function(state) {
         var observerSignatureUrl = '';
         if(dataValue("form.Observer_Signature_Section.Observer_Signature")(state) !== undefined && dataValue("form.Observer_Signature_Section.Observer_Signature")(state) !== '') {
-          observerSignatureUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.Observer_Signature_Section.Observer_Signature")(state);
+          observerSignatureUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.Observer_Signature_Section.Observer_Signature")(state);  
         }
         return observerSignatureUrl;
       }),
-
+      
       field("Observation_Location__Latitude__s", function(state) {
         if(dataValue("form.meta.location.#text")(state) !== undefined) {
           var coordinates = dataValue("form.meta.location.#text")(state).split(' ');
-          return coordinates[0];
+          return coordinates[0]; 
         }
       }),
       field("Observation_Location__Longitude__s", function(state) {
         if(dataValue("form.meta.location.#text")(state) !== undefined) {
           var coordinates = dataValue("form.meta.location.#text")(state).split(' ');
-          return coordinates[1];
+          return coordinates[1]; 
         }
       }),
       field("Altitude__c", function(state) {
         if(dataValue("form.meta.location.#text")(state) !== undefined) {
           var coordinates = dataValue("form.meta.location.#text")(state).split(' ');
-          return coordinates[2];
+          return coordinates[2]; 
         }
       })
     )
@@ -53,7 +53,7 @@ each(
 
 // Create results for Rejuvinated_Trees {Yes || No}
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -69,7 +69,7 @@ each(
 
 // Create results for Sucker_Selection_Taken_Place {Yes || No}
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -86,7 +86,7 @@ each(
 
 // Create results for Maximum_of_Three_Suckers {Yes || No}
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -103,7 +103,7 @@ each(
 
 // Create results for Pruned_Demo_Plot {Yes || No}
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -120,7 +120,7 @@ each(
 
 // Create results for Trees_Reduced_to_2_or_3_Main_Stems {Yes || No}
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -137,7 +137,7 @@ each(
 
 // Create results for Demo_Plots_Free_of_Weeds {Yes || No}
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -154,7 +154,7 @@ each(
 
 // Create results for Mulched_Under_Coffee_Canopy {Yes || No}
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -171,7 +171,7 @@ each(
 
 // Create results for X20_40_Shade_over_Demo_Plot {Yes || No}
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -188,7 +188,7 @@ each(
 
 // Create results for Shade_Trees_Planted {Yes || No}
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -205,7 +205,7 @@ each(
 
 // Create results for Compost_Heap {Yes || No}
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -220,7 +220,7 @@ each(
     field("Photo_URL__c", function(state) {
         var compostHeapPhotoUrl = '';
         if(dataValue("form.Photo_of_Compost_Heap")(state) !== undefined && dataValue("form.Photo_of_Compost_Heap")(state) !== '') {
-          compostHeapPhotoUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.Photo_of_Compost_Heap")(state);
+          compostHeapPhotoUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.Photo_of_Compost_Heap")(state);  
         }
         return compostHeapPhotoUrl;
       })
@@ -229,7 +229,7 @@ each(
 
 // Create results for Vertiver_Grass_on_Demo_Plot {Yes || No}
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -242,3 +242,7 @@ each(
     relationship("Observation_Criterion__r", "Unique_Name__c", "coffeeke_vertiver_grass_on_demo_plot"),
     field("Result__c", dataValue("form.Vertiver_Grass_on_Demo_Plot"))
   )));
+
+// Version control
+
+
