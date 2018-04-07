@@ -12,7 +12,7 @@ each(
       field("Session_Photo_URL__c", function(state) {
           var photoUrl = '';
           if(dataValue("form.photo")(state) !== undefined && dataValue("form.photo")(state) !== '') {
-            photoUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.photo")(state);
+            photoUrl = "https://www.commcarehq.org/a/"+dataValue("domain")(state)+"/api/form/attachment/"+dataValue("form.meta.instanceID")(state)+"/"+dataValue("form.photo")(state);  
           }
           return photoUrl;
       }),
@@ -20,7 +20,7 @@ each(
       field("Location_GPS__Latitude__s", function(state) {
           if(dataValue("form.gps_information.gps_coordinates")(state) !== undefined && dataValue("form.gps_information.gps_coordinates")(state) !== '') {
             var coordinates = dataValue("form.gps_information.gps_coordinates")(state).split(' ');
-            return coordinates[0];
+            return coordinates[0]; 
 
           } if(dataValue("form.gps_information_retry.gps_coordinates")(state) !== undefined && dataValue("form.gps_information_retry.gps_coordinates")(state) !== ''){
             var coordinates = dataValue("form.gps_information_retry.gps_coordinates")(state).split(' ');
@@ -30,7 +30,7 @@ each(
       field("Location_GPS__Longitude__s", function(state) {
           if(dataValue("form.gps_information.gps_coordinates")(state) !== undefined && dataValue("form.gps_information.gps_coordinates")(state) !== '') {
             var coordinates = dataValue("form.gps_information.gps_coordinates")(state).split(' ');
-            return coordinates[1];
+            return coordinates[1]; 
 
           } if(dataValue("form.gps_information_retry.gps_coordinates")(state) !== undefined && dataValue("form.gps_information_retry.gps_coordinates")(state) !== ''){
             var coordinates = dataValue("form.gps_information_retry.gps_coordinates")(state).split(' ');
@@ -40,25 +40,25 @@ each(
       field("Altitude__c", function(state) {
           if(dataValue("form.gps_information.gps_coordinates")(state) !== undefined && dataValue("form.gps_information.gps_coordinates")(state) !== '') {
             var coordinates = dataValue("form.gps_information.gps_coordinates")(state).split(' ');
-            return coordinates[2];
+            return coordinates[2]; 
 
           } if(dataValue("form.gps_information_retry.gps_coordinates")(state) !== undefined && dataValue("form.gps_information_retry.gps_coordinates")(state) !== ''){
             var coordinates = dataValue("form.gps_information_retry.gps_coordinates")(state).split(' ');
             return coordinates[2];
           }
       })
-
+      
     )
   )
 );
 
-//WHAT WAS DONE, TRAINING REFLECTION and CHALLENGES RAISED
+//WHAT WAS DONE, TRAINING REFLECTION and CHALLENGES RAISED 
 
 //Here we create an observation record
 each(
   "$.data",
   upsert("Observation__c", "Submission_ID__c",
-    fields(
+    fields( 
       field("Submission_ID__c", dataValue("id")),
       field("Trainer__c", dataValue("form.trainer")),
       field("Training_Session__c", dataValue("form.training_session")),
@@ -70,11 +70,11 @@ each(
 //What was done
 
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c", fields(
     field("Submission_ID__c", function(state) {
       return dataValue("id")(state) + "cwsp_I_did_what_I_need_to_do";
-
+      
     }),
     relationship("Observation__r", "Submission_ID__c", dataValue("id")),
     field("RecordTypeId", "0122400000111gAAAQ"),
@@ -85,11 +85,11 @@ each(
 
 //Training reflection
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c", fields(
     field("Submission_ID__c", function(state) {
       return dataValue("id")(state) + "cwsp_reflection_on_training";
-
+      
     }),
     relationship("Observation__r", "Submission_ID__c", dataValue("id")),
     field("RecordTypeId", "0122400000111gAAAQ"),
@@ -110,7 +110,7 @@ each(
       }
     }),
     //SWITCH STATEMENT GOES HERE TO MAP REFLECTION ON TRAINING TO RESULTS FIELD.
-
+    
     // field("Result__c", dataValue("form.reflection_on_training")),
     field("Comments__c", dataValue("form.reflection_on_training"))
   )));
@@ -118,11 +118,11 @@ each(
 //Challenges raised
 
 each(
-  "$.data",
+  "$.data",  
   upsert("Observation_Result__c", "Submission_ID__c", fields(
     field("Submission_ID__c", function(state) {
       return dataValue("id")(state) + "cwsp_key_challenges_raised_by_training";
-
+      
     }),
     relationship("Observation__r", "Submission_ID__c", dataValue("id")),/*function(state){
       return state.references[state.references.length-2].id;
@@ -150,7 +150,7 @@ each(
 //   upsert("Observation_Result__c", "Submission_ID__c", fields(
 //     field("Submission_ID__c", function(state) {
 //       return dataValue("submission") + dataValue("challenge");
-
+      
 //     }),
 //     relationship("Observation__r", "Submission_ID__c", dataValue("submission")),/*function(state){
 //       return state.references[state.references.length-2].id;
@@ -160,7 +160,7 @@ each(
 //     field("Comments__c", dataValue("challenge"))
 //   ))
 // );
-
+  
   beta.each(
   function(state) {
     if (state.data.form.present_participants) {
@@ -178,8 +178,8 @@ each(
   },
   upsert("Attendance__c", "Submission_ID__c", fields(
     field("Submission_ID__c", function(state) {
-     return dataValue("submission")(state) + dataValue("participant")(state);
-
+     return dataValue("submission")(state) + dataValue("participant")(state); 
+      
     }),
       field("Status__c", "Present"),
       relationship("Training_Session__r", "CommCare_Case_Id__c", dataValue("session")),
@@ -197,3 +197,5 @@ each(
     )
   )
 );
+
+// Version control
