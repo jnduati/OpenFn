@@ -41,7 +41,7 @@ each(
           "@": {
             "case_id": dataValue("commCareCaseId")(state),
             "date_modified": new Date().toISOString(),
-            "user_id": "f1ffc61aa02f30f7c078ddc5a95f48a9",
+            "user_id": "e926526fc13b126fffdb6d001f25b269",
             "xmlns:n0": "http://commcarehq.org/case/transaction/v2"
           },
           "n0:create": {
@@ -82,8 +82,8 @@ each(
           "n1:deviceID": "tiny_little_openfn_robots_with_impeccable_moustaches",
           "n1:timeStart": new Date().toISOString(),
           "n1:timeEnd": new Date().toISOString(),
-          "n1:username": "mjuma",
-          "n1:userID": "f1ffc61aa02f30f7c078ddc5a95f48a9"
+          "n1:username": "api",
+          "n1:userID": "e926526fc13b126fffdb6d001f25b269"
         };
       })
     )
