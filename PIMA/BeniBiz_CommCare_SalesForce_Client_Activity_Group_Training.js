@@ -58,7 +58,7 @@ beta.each(
             session: dataValue("form.training_session")(state),
             date: dataValue("form.training_session_details.date")(state),
             task: "Tasks Assigned: "+dataValue("form.tasks_assigned")(state),
-            submission: dataValue("id")(state)+cId
+            submission: dataValue("form.training_session")(state)+cId
           };
         }
       );
