@@ -45,14 +45,6 @@ beta.each(
         field("Sent_to_OpenFn_Status__c", "Complete"),
         field("Phone_Number__c", dataValue("form.Phone_Number")),
         field("Other_ID_Number__c", dataValue("form.Cooperative_Membership_Number")),
-        /*field("Farm_Size__c", function(state){
-          if(dataValue("form.Status")(state) == "Inactive" || dataValue("form.Status")(state) == "Deceased"){
-            return undefined;
-          }
-          else {
-            return dataValue("form.Number_of_Trees")(state);
-          }
-        }),*/
         field("Primary_Household_Member__c", dataValue("form.Primary_Household_Member")),
         relationship("Household__r", "Household_ID__c", dataValue("form.Household_Id")),
         relationship("Training_Group__r", "CommCare_Case_Id__c", dataValue("form.Training_Group_Id"))
@@ -84,3 +76,5 @@ beta.each(
     )
   )
 );
+
+//Version Control
