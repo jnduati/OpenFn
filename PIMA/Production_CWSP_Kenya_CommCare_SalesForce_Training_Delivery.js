@@ -207,5 +207,3 @@ each(
 );
 
 // Version control
-
-
