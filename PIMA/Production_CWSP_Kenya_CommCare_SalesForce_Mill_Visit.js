@@ -64,7 +64,6 @@ each(
 each(
   "$.data",
   upsertIf(
-    //state.data.form.mandatory_check_empty != undefined,
     state.data.form.mandatory_check_empty != 0,
     "Observation_Result__c",
     "Submission_ID__c",
@@ -972,5 +971,3 @@ each(
 );
 
 // Version control
-
-
