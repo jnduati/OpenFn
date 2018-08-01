@@ -52,14 +52,6 @@ each(
       )
     )
   );
-// each(
-//   "$.data",
-//   upsert("Client_Activity__c", "Submission_ID__c",
-//     fields(
-//       field("Submission_ID__c", function(state) {
-//         return dataValue("id")(state)+dataValue("form.client")(state);
-//       },
-//       field("Create_in_CommCare__c", true)
-//     )
-//   )
-// ));
+
+
+//Version Control
