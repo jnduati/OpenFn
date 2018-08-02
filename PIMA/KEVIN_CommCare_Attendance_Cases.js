@@ -8,7 +8,7 @@ function changeState(state) {
   return state;
 }
 
-changeState();
+changeState(state);
   
 // }
 // alterState((state) => {
