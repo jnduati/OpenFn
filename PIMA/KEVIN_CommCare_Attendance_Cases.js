@@ -1,12 +1,24 @@
 // Here, we make sure CommCare gives us an array to use in each(merge(...), ...)
-alterState((state) => {
+function changeState(state) {
   let presentClients = state.data.form.Present_Clients;
   if (!Array.isArray(presentClients)) {
     presentClients = state.data.form.Present_Clients.split(" ");
   }
   console.log(presentClients);
   return state;
-});
+}
+
+changeState();
+  
+// }
+// alterState((state) => {
+//   let presentClients = state.data.form.Present_Clients;
+//   if (!Array.isArray(presentClients)) {
+//     presentClients = state.data.form.Present_Clients.split(" ");
+//   }
+//   console.log(presentClients);
+//   return state;
+// });
 
 each(
   "$.data.form.Present_Clients[*]",
