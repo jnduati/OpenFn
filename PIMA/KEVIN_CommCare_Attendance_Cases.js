@@ -1,6 +1,8 @@
 // Here, we make sure CommCare gives us an array to use in each(merge(...), ...)
+var presentClients = state.data.form.Present_Clients;
+
+
 function changeState(state) {
-  let presentClients = state.data.form.Present_Clients;
   if (!Array.isArray(presentClients)) {
     presentClients = state.data.form.Present_Clients.split(" ");
   }
