@@ -1,29 +1,12 @@
-// Here, we make sure CommCare gives us an array to use in each(merge(...), ...)
-var presentClients = state.data.form.Present_Clients.split(" ");
-
-
-// function changeState(state) {
-//   if (!Array.isArray(presentClients)) {
-//     presentClients = state.data.form.Present_Clients.split(" ");
-//   }
-//   console.log(presentClients);
-//   return state;
-// }
-
-// changeState(state);
-  
-// }
-// alterState((state) => {
-//   let presentClients = state.data.form.Present_Clients;
-//   if (!Array.isArray(presentClients)) {
-//     presentClients = state.data.form.Present_Clients.split(" ");
-//   }
-//   console.log(presentClients);
-//   return state;
-// });
+alterState(state => {
+  // Split the space-separated string into an array of IDs.
+  const clientArray = state.data.form.Present_Clients.split(" ");
+  state.presentClients = clientArray.map(c => ({id: c, parentData: state.data}));
+  return state;
+})
 
 each(
-  presentClients,
+  "$.presentClients[*]",
   submit(
     fields(
       field("@", function(state) {
@@ -35,8 +18,8 @@ each(
           "name": "New Attendance",
         };
       }),
-      field("Date", dataValue("form.Date")),
-      field("Training_Module", dataValue("form.Training_Module")),
+      field("Date", dataValue("parentData.form.Date")),
+      field("Training_Module", dataValue("parentData.form.Training_Module")),
       field("GPS_Coordinates", (state) => {
         // define this once, it's constant...
         const coords = state.data.form.GPS_Coordinates;
@@ -47,27 +30,27 @@ each(
         // the 'else' is unnecessary, return '' if there are no coords
         return '';
       }),
-      field("Photo_URL", dataValue("form.Photo")),
-      field("Signature_URL", dataValue("form.Trainer_Signature")),
+      field("Photo_URL", dataValue("parentData.form.Photo")),
+      field("Signature_URL", dataValue("parentData.form.Trainer_Signature")),
       
       field("n0:case", function(state) {
         return {
           "@": {
-            "case_id": dataValue("form.Present_Clients[*]")(state) + dataValue("id")(state),
+            "case_id": state.data.id,
             "date_modified": new Date().toISOString(),
             "user_id": "e926526fc13b126fffdb6d001f25b269",
             "xmlns:n0": "http://commcarehq.org/case/transaction/v2"
           },
           "n0:create": {
-            "n0:case_name": dataValue("form.Training_Module")(state),
+            "n0:case_name": dataValue("parentData.form.Training_Module")(state),
             "n0:owner_id": "e926526fc13b126fffdb6d001f25b269",
             "n0:case_type": "zAttendance"
           },
           "n0:update": {
-            "n0:Client": dataValue("form.Present_Clients[*]")(state),
-            "n0:Date": dataValue("form.Date"),
-            "n0:Photo_URL": dataValue("form.Photo")(state),
-            "n0:Signature_URL": dataValue("form.Trainer_Signature")(state),
+            "n0:Client": state.data.id,
+            "n0:Date": dataValue("parentData.form.Date"),
+            "n0:Photo_URL": dataValue("parentData.form.Photo")(state),
+            "n0:Signature_URL": dataValue("parentData.form.Trainer_Signature")(state),
             "n0:GPS_Coordinates": (state) => {
               // define this once, it's constant...
               const coords = state.data.form.GPS_Coordinates;
@@ -84,7 +67,7 @@ each(
               "@": {
                 "case_type": "zTrainingGroup"
               },
-              "#": dataValue("form.case.@case_id")(state)
+              "#": dataValue("parentData.form.case.@case_id")(state)
             }
           }
         };
