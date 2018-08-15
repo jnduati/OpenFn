@@ -6,7 +6,7 @@ each(
   upsert("Observation__c", "Submission_ID__c",
     fields(
       field("Submission_ID__c", dataValue("id")),
-      field("Observer__c", dataValue("form.Observer")),
+      field("Observer__c", dataValue("form.observer")),
       field("Trainer__c", dataValue("form.trainer")),
       field("Training_Group__c", dataValue("form.training_group")),
       field("Training_Session__c", dataValue("form.training_session")),
