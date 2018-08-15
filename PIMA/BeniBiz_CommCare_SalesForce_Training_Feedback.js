@@ -77,7 +77,7 @@ each(
 each(
   "$.data",
   upsertIf(
-    state.data.form.participant_feedback_label !== null,
+    state.data.form.participant_feedback_label !== "no",
     "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -93,7 +93,7 @@ each(
 each(
   "$.data",
   upsertIf(
-    state.data.form.participant_feedback_label !== null,
+    state.data.form.participant_feedback_label !== "no",
     "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -109,7 +109,7 @@ each(
 each(
   "$.data",
   upsertIf(
-    state.data.form.participant_feedback_label !== null,
+    state.data.form.participant_feedback_label !== "no",
     "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -127,7 +127,7 @@ each(
 each(
   "$.data",
   upsertIf(
-    state.data.form.participant_feedback_label !== null,
+    state.data.form.participant_feedback_label !== "no",
     "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -143,7 +143,7 @@ each(
 each(
   "$.data",
   upsertIf(
-    state.data.form.participant_feedback_label !== null,
+    state.data.form.participant_feedback_label !== "no",
     "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -159,7 +159,7 @@ each(
 each(
   "$.data",
   upsertIf(
-    state.data.form.participant_feedback_label !== null,
+    state.data.form.participant_feedback_label !== "no",
     "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -177,7 +177,7 @@ each(
 each(
   "$.data",
   upsertIf(
-    state.data.form.participant_feedback_label !== null,
+    state.data.form.participant_feedback_label !== "no",
     "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -193,7 +193,7 @@ each(
 each(
   "$.data",
   upsertIf(
-    state.data.form.participant_feedback_label !== null,
+    state.data.form.participant_feedback_label !== "no",
     "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
@@ -209,7 +209,7 @@ each(
 each(
   "$.data",
   upsertIf(
-    state.data.form.participant_feedback_label !== null,
+    state.data.form.participant_feedback_label !== "no",
     "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
