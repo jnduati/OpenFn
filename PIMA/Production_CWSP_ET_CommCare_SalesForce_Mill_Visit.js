@@ -1,4 +1,4 @@
-//JOB: Mill Visit (Demo Plot Observation)
+//JOB: Mill Visit - ET2 (Updated)
 
 each(
 "$.data",
@@ -58,13 +58,13 @@ each(
   )
 ),
 
+
 //HERE WE CAPTURE ALL THE MANDATORY CHECKS RESPONSES
 
 // Create results for Child Labour {Pass || Fail}
 each(
   "$.data",
   upsertIf(
-    //state.data.form.mandatory_check_empty != undefined,
     state.data.form.mandatory_check_empty != 0,
     "Observation_Result__c",
     "Submission_ID__c",
@@ -79,6 +79,32 @@ each(
       field("Comments__c", function(state){
         if(dataValue("form.mandatory_checks.child_labour_screen.child_labour_comments")(state) !== undefined) {
           	return dataValue("form.mandatory_checks.child_labour_screen.child_labour_comments")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+  )
+),
+
+// Create results for Forced Labour {Pass || Fail}
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.mandatory_check_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_forced_labour";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSG9AAM"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_forced_labour"),
+      field("Result__c", dataValue("form.mandatory_checks.forced_labour_screen.forced_labour")),
+      field("Comments__c", function(state){
+        if(dataValue("form.mandatory_checks.forced_labour_screen.forced_labour_comments")(state) !== undefined) {
+          	return dataValue("form.mandatory_checks.forced_labour_screen.forced_labour_comments")(state);
         } else {
           return '';
         }
@@ -578,7 +604,371 @@ each(
       })
     )
   )
+),
+
+//HERE WE CAPTURE ALL THE COMMENTS FROM OTHER VISIT TYPES
+
+// Create results collecting samples check
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.collecting_samples_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_collecting_samples_check";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o000001149CAAQ"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_collecting_samples_check"),
+      field("Comments__c", function(state){
+        if(dataValue("form.collecting_samples_comment")(state) !== undefined) {
+            return dataValue("form.collecting_samples_comment")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+    
+  )
+),
+
+// Create results attend general meeting check
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.attend_general_meeting_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_attend_general_meeting_check";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o000001149HAAQ"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_attend_general_meeting_check"),
+      field("Comments__c", function(state){
+        if(dataValue("form.attend_general_meetings_comment")(state) !== undefined) {
+            return dataValue("form.attend_general_meetings_comment")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+    
+  )
+),
+
+// Create results attend mill review check
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.attend_mill_review_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_attend_mill_review_check";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o000001149MAAQ"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_attend_mill_review_check"),
+      field("Comments__c", function(state){
+        if(dataValue("form.attend_mill_review_comment")(state) !== undefined) {
+            return dataValue("form.attend_mill_review_comment")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+    
+  )
+),
+
+// Create results machine audit check
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.machine_audit_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_machine_audit_check";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o000001149RAAQ"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_machine_audit_check"),
+      field("Comments__c", function(state){
+        if(dataValue("form.machine_audit_comment")(state) !== undefined) {
+            return dataValue("form.machine_audit_comment")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+  )
+),
+
+// Create results coffee quality check
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.coffee_quality_check_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_coffee_quality_check";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o000001149WAAQ"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_coffee_quality_check"),
+      field("Comments__c", function(state){
+        if(dataValue("form.coffee_quality_check_comment")(state) !== undefined) {
+            return dataValue("form.coffee_quality_check_comment")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+  )
+),
+
+// Create results stakeholder meeting
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.stakeholder_meeting_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_stakeholder_meeting_check";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o00000114HzAAI"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_stakeholder_meeting_check"),
+      field("Comments__c", function(state){
+        if(dataValue("form.stake_holder_meeting_comment")(state) !== undefined) {
+            return dataValue("form.stake_holder_meeting_comment")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+  )
+),
+
+// Create results water consumption (separate) check
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.water_consumption_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_water_consumption_check";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o00000114HpAAI"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_water_consumption_check"),
+      field("Comments__c", function(state){
+        if(dataValue("form.water_consumption_check.water_consumption_comment")(state) !== undefined) {
+            return dataValue("form.water_consumption_check.water_consumption_comment")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+    
+  )
+),
+
+// Create results water consumption -- recirc pump
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.water_consumption_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_mill_have_a_recirculation_pump";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o00000114HpAAI"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_mill_have_a_recirculation_pump"),
+      field("Result__c", function(state){
+        if(dataValue("form.water_consumption_check.mill_have_a_recirculation_pump")(state) !== undefined) {
+            return dataValue("form.water_consumption_check.mill_have_a_recirculation_pump")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+    
+  )
+),
+
+// Create results water consumption -- recirc pump works
+/**
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.water_consumption_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_recirculation_pump_working";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o00000114HpAAI"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_recirculation_pump_working"),
+      field("Result__c", function(state){
+        if(dataValue("form.water_consumption_check.is_the_recirculation_pump_working")(state) !== undefined) {
+            return dataValue("form.water_consumption_check.is_the_recirculation_pump_working")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+    
+  )
+),
+*/
+
+// Create results water consumption -- water meter
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.water_consumption_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_mill_have_a_water_meter";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o00000114HpAAI"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_mill_have_a_water_meter"),
+      field("Result__c", function(state){
+        if(dataValue("form.water_consumption_check.does_the_mill_have_a_water_meter")(state) !== undefined) {
+            return dataValue("form.water_consumption_check.does_the_mill_have_a_water_meter")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+    
+  )
+),
+
+// Create results water consumption -- water meter works
+/**
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.water_consumption_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_water_meter_working";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o00000114HpAAI"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_water_meter_working"),
+      field("Result__c", function(state){
+        if(dataValue("form.water_consumption_check.is_the_water_meter_working")(state) !== undefined) {
+            return dataValue("form.water_consumption_check.is_the_water_meter_working")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+  )
+),
+*/
+
+// Create results risk assessment check
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.risk_assessment_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_risk_assessment_check";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o00000114I4AAI"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_risk_assessment_check"),
+      field("Comments__c", function(state){
+        if(dataValue("form.risk_assessment_comment")(state) !== undefined) {
+            return dataValue("form.risk_assessment_comment")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+    
+  )
+),
+
+// Create results environmental audit check
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.enviromental_audit_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_environmental_audit_check";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o00000114I9AAI"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_environmental_audit_check"),
+      field("Comments__c", function(state){
+        if(dataValue("form.environmental_audit_and_management_plan_comment")(state) !== undefined) {
+            return dataValue("form.environmental_audit_and_management_plan_comment")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+    
+  )
+),
+
+// Create results other activity check
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.other_activity_empty != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_other_activity_check";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "0121o000001149bAAA"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_other_activity_check"),
+      field("Comments__c", function(state){
+        if(dataValue("form.other_activity_comment")(state) !== undefined) {
+            return dataValue("form.other_activity_comment")(state);
+        } else {
+          return '';
+        }
+      })
+    )
+  )
 );
 
 // Version control
-
