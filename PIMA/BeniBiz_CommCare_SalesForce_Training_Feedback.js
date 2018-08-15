@@ -76,7 +76,9 @@ each(
   
 each(
   "$.data",
-  upsert("Observation_Result__c", "Submission_ID__c",
+  upsertIf(
+    state.data.form.participant_feedback_label !== null,
+    "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
       return dataValue("id")(state) + "benibiz_three_lessons-p1";
@@ -90,7 +92,9 @@ each(
 
 each(
   "$.data",
-  upsert("Observation_Result__c", "Submission_ID__c",
+  upsertIf(
+    state.data.form.participant_feedback_label !== null,
+    "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
       return dataValue("id")(state) + "benibiz_three_lessons-p2";
@@ -104,7 +108,9 @@ each(
 
 each(
   "$.data",
-  upsert("Observation_Result__c", "Submission_ID__c",
+  upsertIf(
+    state.data.form.participant_feedback_label !== null,
+    "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
       return dataValue("id")(state) + "benibiz_three_lessons-p3";
@@ -120,7 +126,9 @@ each(
 
 each(
   "$.data",
-  upsert("Observation_Result__c", "Submission_ID__c",
+  upsertIf(
+    state.data.form.participant_feedback_label !== null,
+    "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
       return dataValue("id")(state) + "benibiz_recommended_entrepreneurs-p1";
@@ -134,7 +142,9 @@ each(
 
 each(
   "$.data",
-  upsert("Observation_Result__c", "Submission_ID__c",
+  upsertIf(
+    state.data.form.participant_feedback_label !== null,
+    "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
       return dataValue("id")(state) + "benibiz_recommended_entrepreneurs-p2";
@@ -148,7 +158,9 @@ each(
 
 each(
   "$.data",
-  upsert("Observation_Result__c", "Submission_ID__c",
+  upsertIf(
+    state.data.form.participant_feedback_label !== null,
+    "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
       return dataValue("id")(state) + "benibiz_recommended_entrepreneurs-p3";
@@ -164,7 +176,9 @@ each(
 
 each(
   "$.data",
-  upsert("Observation_Result__c", "Submission_ID__c",
+  upsertIf(
+    state.data.form.participant_feedback_label !== null,
+    "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
       return dataValue("id")(state) + "benibiz_program_improvements-p1";
@@ -178,7 +192,9 @@ each(
 
 each(
   "$.data",
-  upsert("Observation_Result__c", "Submission_ID__c",
+  upsertIf(
+    state.data.form.participant_feedback_label !== null,
+    "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
       return dataValue("id")(state) + "benibiz_program_improvements-p2";
@@ -192,7 +208,9 @@ each(
 
 each(
   "$.data",
-  upsert("Observation_Result__c", "Submission_ID__c",
+  upsertIf(
+    state.data.form.participant_feedback_label !== null,
+    "Observation_Result__c", "Submission_ID__c",
     fields(
     field("Submission_ID__c", function(state) {
       return dataValue("id")(state) + "benibiz_program_improvements-p3";
