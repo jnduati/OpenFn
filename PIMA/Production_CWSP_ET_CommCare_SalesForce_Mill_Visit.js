@@ -1,4 +1,4 @@
-//JOB: Mill Visit - ET2 (Updated)
+//JOB: Mill Visit - ET2
 
 each(
 "$.data",
@@ -24,34 +24,34 @@ each(
         return observerSignatureUrl;
       }),
       field("Observation_Location__Latitude__s", function(state) {
-	        if(dataValue("form.gps_information.gps_coordinates")(state) !== undefined && dataValue("form.gps_information.gps_coordinates")(state) !== '' && dataValue("form.gps_information.gps_coordinates")(state) !== null) {
-	            var coordinates = dataValue("form.gps_information.gps_coordinates")(state).split(' ');
-	            return coordinates[0];
+          if(dataValue("form.gps_information.gps_coordinates")(state) !== undefined && dataValue("form.gps_information.gps_coordinates")(state) !== '' && dataValue("form.gps_information.gps_coordinates")(state) !== null) {
+              var coordinates = dataValue("form.gps_information.gps_coordinates")(state).split(' ');
+              return coordinates[0];
 
-          	} if(dataValue("form.gps_information_retry.gps_coordinates")(state) !== undefined && dataValue("form.gps_information_retry.gps_coordinates")(state) !== '' && dataValue("form.gps_information_retry.gps_coordinates")(state) !== null){
-	            var coordinates = dataValue("form.gps_information_retry.gps_coordinates")(state).split(' ');
-	            return coordinates[0];
-	        }
+            } if(dataValue("form.gps_information_retry.gps_coordinates")(state) !== undefined && dataValue("form.gps_information_retry.gps_coordinates")(state) !== '' && dataValue("form.gps_information_retry.gps_coordinates")(state) !== null){
+              var coordinates = dataValue("form.gps_information_retry.gps_coordinates")(state).split(' ');
+              return coordinates[0];
+          }
       }),
       field("Observation_Location__Longitude__s", function(state) {
-	        if(dataValue("form.gps_information.gps_coordinates")(state) !== undefined && dataValue("form.gps_information.gps_coordinates")(state) !== '' && dataValue("form.gps_information.gps_coordinates")(state) !== null) {
-	            var coordinates = dataValue("form.gps_information.gps_coordinates")(state).split(' ');
-	            return coordinates[1];
+          if(dataValue("form.gps_information.gps_coordinates")(state) !== undefined && dataValue("form.gps_information.gps_coordinates")(state) !== '' && dataValue("form.gps_information.gps_coordinates")(state) !== null) {
+              var coordinates = dataValue("form.gps_information.gps_coordinates")(state).split(' ');
+              return coordinates[1];
 
-          	} if(dataValue("form.gps_information_retry.gps_coordinates")(state) !== undefined && dataValue("form.gps_information_retry.gps_coordinates")(state) !== '' && dataValue("form.gps_information_retry.gps_coordinates")(state) !== null){
-	            var coordinates = dataValue("form.gps_information_retry.gps_coordinates")(state).split(' ');
-	            return coordinates[1];
-	        }
+            } if(dataValue("form.gps_information_retry.gps_coordinates")(state) !== undefined && dataValue("form.gps_information_retry.gps_coordinates")(state) !== '' && dataValue("form.gps_information_retry.gps_coordinates")(state) !== null){
+              var coordinates = dataValue("form.gps_information_retry.gps_coordinates")(state).split(' ');
+              return coordinates[1];
+          }
       }),
       field("Altitude__c", function(state) {
-	        if(dataValue("form.gps_information.gps_coordinates")(state) !== undefined && dataValue("form.gps_information.gps_coordinates")(state) !== '' && dataValue("form.gps_information.gps_coordinates")(state) !== null) {
-	            var coordinates = dataValue("form.gps_information.gps_coordinates")(state).split(' ');
-	            return coordinates[2];
+          if(dataValue("form.gps_information.gps_coordinates")(state) !== undefined && dataValue("form.gps_information.gps_coordinates")(state) !== '' && dataValue("form.gps_information.gps_coordinates")(state) !== null) {
+              var coordinates = dataValue("form.gps_information.gps_coordinates")(state).split(' ');
+              return coordinates[2];
 
-          	} if(dataValue("form.gps_information_retry.gps_coordinates")(state) !== undefined && dataValue("form.gps_information_retry.gps_coordinates")(state) !== '' && dataValue("form.gps_information_retry.gps_coordinates")(state) !== null){
-	            var coordinates = dataValue("form.gps_information_retry.gps_coordinates")(state).split(' ');
-	            return coordinates[2];
-	        }
+            } if(dataValue("form.gps_information_retry.gps_coordinates")(state) !== undefined && dataValue("form.gps_information_retry.gps_coordinates")(state) !== '' && dataValue("form.gps_information_retry.gps_coordinates")(state) !== null){
+              var coordinates = dataValue("form.gps_information_retry.gps_coordinates")(state).split(' ');
+              return coordinates[2];
+          }
       })
 
     )
@@ -967,6 +967,820 @@ each(
           return '';
         }
       })
+    )
+  )
+),
+
+WASTE WATER CHECK
+
+//WASTE-WATER CHECKS = 01224000000oSGAAA2
+
+
+//WETLAND CONSTRUCTION
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_construction_excavation != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_construction_wetland_excavation";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_construction_wetland_excavation"),
+      field("Result__c", dataValue("form.water_consumption_check.wetland_construction.wetland_excavation"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_construction_leveling != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_construction_wetland_leveling";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_construction_wetland_leveling"),
+      field("Result__c", dataValue("form.water_consumption_check.wetland_construction.wetland_leveling"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_construction_vativer_planting != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_construction_wetland_vetiver_planting";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_construction_wetland_vetiver_planting"),
+      field("Result__c", dataValue("form.water_consumption_check.wetland_construction.wetland_vetiver_planting"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_construction_soil_bund_building != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_construction_wetland_soil_bund_building_or_planting";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_construction_wetland_soil_bund_building_or_planting"),
+      field("Result__c", dataValue("form.water_consumption_check.wetland_construction.wetland_soil_bund_building_or_planting"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_construction_grass_strips_planting != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_construction_wetland_grass_strips_planting";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_construction_wetland_grass_strips_planting"),
+      field("Result__c", dataValue("form.water_consumption_check.wetland_construction.wetland_grass_strips_planting"))
+    )
+  )
+),
+
+
+//WETLAND MAINTENANCE
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_maintenance_weeding_vetiver != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_maintenance_wetland_weeding_vetiver";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_maintenance_wetland_weeding_vetiver"),
+      field("Result__c", dataValue("form.water_consumption_check.wetland_maintenance.wetland_weeding_vetiver"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_maintenance_cutting_vertiver != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_maintenance_wetland_cutting_vetiver";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_maintenance_wetland_cutting_vetiver"),
+      field("Result__c", dataValue("form.water_consumption_check.wetland_maintenance.wetland_cutting_vetiver"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.form.empty_wetland_maintenance_infilling != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_maintenance_wetland_infilling";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_maintenance_wetland_infilling"),
+      field("Result__c", dataValue("form.water_consumption_check.wetland_maintenance.wetland_infilling"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_maintenance_grass_strips != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_maintenance_wetland_grass_strips";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_maintenance_wetland_grass_strips"),
+      field("Result__c", dataValue("form.water_consumption_check.wetland_maintenance.wetland_grass_strips"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_maintenance_correcting_slopes != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_maintenance_wetland_correcting_sloped";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_maintenance_wetland_correcting_sloped"),
+      field("Result__c", dataValue("form.water_consumption_check.wetland_maintenance.wetland_correcting_sloped"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_maintenance_correcting_levels != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_maintenance_wetland_correcting_levels";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_maintenance_wetland_correcting_levels"),
+      field("Result__c", dataValue("form.water_consumption_check.wetland_maintenance.wetland_correcting_levels"))
+    )
+  )
+),
+
+
+//PULP HOPPER CONSTRUCTION
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_hopper_construction_site_survey != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_construction_pulp_hopper_construction_site_survey_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_construction_pulp_hopper_construction_site_survey_done"),
+      field("Result__c", dataValue("form.pulp_hopper_construction_check.pulp_hopper_construction.pulp_hopper_construction_site_survey_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_hopper_construction_site_layout != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_construction_pulp_hopper_construction_site_layout_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_construction_pulp_hopper_construction_site_layout_done"),
+      field("Result__c", dataValue("form.pulp_hopper_construction_check.pulp_hopper_construction.pulp_hopper_construction_site_layout_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_hopper_construction_excavation != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_construction_pulp_hopper_construction_excavation_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_construction_pulp_hopper_construction_excavation_done"),
+      field("Result__c", dataValue("form.pulp_hopper_construction_check.pulp_hopper_construction.pulp_hopper_construction_excavation_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_hopper_construction_leveling != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_construction_pulp_hopper_construction_site_leveling_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_construction_pulp_hopper_construction_site_leveling_done"),
+      field("Result__c", dataValue("form.pulp_hopper_construction_check.pulp_hopper_construction.pulp_hopper_construction_site_leveling_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_hopper_construction_material_sourcing_and_deliver != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_construction_pulp_hopper_construction_material_sourcing_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_construction_pulp_hopper_construction_material_sourcing_done"),
+      field("Result__c", dataValue("form.pulp_hopper_construction_check.pulp_hopper_construction.pulp_hopper_construction_material_sourcing_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_hopper_construction_construction_oversight != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_construction_pulp_hopper_construction_oversight_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_construction_pulp_hopper_construction_oversight_done"),
+      field("Result__c", dataValue("form.pulp_hopper_construction_check.pulp_hopper_construction.pulp_hopper_construction_oversight_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_hopper_construction_plastering_oversight != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_construction_pulp_hopper_construction_plastering_oversight_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_construction_pulp_hopper_construction_plastering_oversight_done"),
+      field("Result__c", dataValue("form.pulp_hopper_construction_check.pulp_hopper_construction.pulp_hopper_construction_plastering_oversight_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_hopper_construction_mesh_wire_installation != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_construction_pulp_hopper_construction_mesh_wire_installation_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_construction_pulp_hopper_construction_mesh_wire_installation_done"),
+      field("Result__c", dataValue("form.pulp_hopper_construction_check.pulp_hopper_construction.pulp_hopper_construction_mesh_wire_installation_done"))
+    )
+  )
+),
+
+
+//PULP HOPPER MAINTENANCE
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_hopper_maintenance_pulp_hopper_is_clean!= 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_maintenance_pulp_hopper_maintenance_clean_post_harvest";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_maintenance_pulp_hopper_maintenance_clean_post_harvest"),
+      field("Result__c", dataValue("fform.pulp_hopper_construction_check.pulp_hopper_maintenance.pulp_hopper_maintenance_clean_post_harvest"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_hopper_maintenance_inspect_pulp_hopper_for_cracks != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_maintenance_pulp_hopper_inspection_for_cracks";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_maintenance_pulp_hopper_inspection_for_cracks"),
+      field("Result__c", dataValue("form.pulp_hopper_construction_check.pulp_hopper_maintenance.pulp_hopper_inspection_for_cracks"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_hopper_maintenance_repair_cracked_pulp_hopper != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_maintenance_pulp_hopper_repair_for_cracks";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_maintenance_pulp_hopper_repair_for_cracks"),
+      field("Result__c", dataValue("form.pulp_hopper_construction_check.pulp_hopper_maintenance.pulp_hopper_repair_for_cracks"))
+    )
+  )
+),
+
+
+//MACHINE HOUSE TO PULPER
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_machine_house_to_pulper_slope_checkin != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_construction_machine_house_to_pulper_slope_checking_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_construction_machine_house_to_pulper_slope_checking_done"),
+      field("Result__c", dataValue("form.channel_connection_check.pulp_hopper_construction.machine_house_to_pulper_slope_checking_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_machine_house_to_pulper_digging != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_construction_machine_house_to_pulper_digging_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_construction_machine_house_to_pulper_digging_done"),
+      field("Result__c", dataValue("form.channel_connection_check.pulp_hopper_construction.machine_house_to_pulper_digging_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_machine_house_to_pulper_installation != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_construction_machine_house_to_pulper_installation_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_construction_machine_house_to_pulper_installation_done"),
+      field("Result__c", dataValue("form.channel_connection_check.pulp_hopper_construction.machine_house_to_pulper_installation_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_machine_house_to_pulper_maintenance != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_construction_machine_house_to_pulper_maintenance_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_construction_machine_house_to_pulper_maintenance_done"),
+      field("Result__c", dataValue("form.channel_connection_check.pulp_hopper_construction.machine_house_to_pulper_maintenance_done"))
+    )
+  )
+),
+
+
+//PULPER TO WETLAND
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_to_wetland_slope_checkin != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_to_wetland_pulp_hopper_to_wetland_slope_checking_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_to_wetland_pulp_hopper_to_wetland_slope_checking_done"),
+      field("Result__c", dataValue("form.channel_connection_check.pulp_hopper_to_wetland.pulp_hopper_to_wetland_slope_checking_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_to_wetland_digging != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_to_wetland_pulp_hopper_to_wetland_digging_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_to_wetland_pulp_hopper_to_wetland_digging_done"),
+      field("Result__c", dataValue("form.channel_connection_check.pulp_hopper_to_wetland.pulp_hopper_to_wetland_digging_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_to_wetland_installation != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_to_wetland_pulp_hopper_to_wetland_installation_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_to_wetland_pulp_hopper_to_wetland_installation_done"),
+      field("Result__c", dataValue("form.channel_connection_check.pulp_hopper_to_wetland.pulp_hopper_to_wetland_installation_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_pulp_to_wetland_maintenance != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_pulp_hopper_to_wetland_pulp_hopper_to_wetland_maintenance_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_pulp_hopper_to_wetland_pulp_hopper_to_wetland_maintenance_done"),
+      field("Result__c", dataValue("form.channel_connection_check.pulp_hopper_to_wetland.pulp_hopper_to_wetland_maintenance_done"))
+    )
+  )
+),
+
+
+//WETLAND TO LAGOON
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_to_lagoon_slope_checkin != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_to_lagoon_wetland_to_lagoon_slope_checking_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_to_lagoon_wetland_to_lagoon_slope_checking_done"),
+      field("Result__c", dataValue("form.channel_connection_check.wetland_to_lagoon.wetland_to_lagoon_slope_checking_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_to_lagoon_digging != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_to_lagoon_wetland_to_lagoon_digging_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_to_lagoon_wetland_to_lagoon_digging_done"),
+      field("Result__c", dataValue("form.channel_connection_check.wetland_to_lagoon.wetland_to_lagoon_digging_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_to_lagoon_installation != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_to_lagoon_wetland_to_lagoon_installation_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_to_lagoon_wetland_to_lagoon_installation_done"),
+      field("Result__c", dataValue("form.channel_connection_check.wetland_to_lagoon.wetland_to_lagoon_installation_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_wetland_to_lagoon_maintenance != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_wetland_to_lagoon_wetland_to_lagoon_maintenance_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_wetland_to_lagoon_wetland_to_lagoon_maintenance_done"),
+      field("Result__c", dataValue("form.channel_connection_check.wetland_to_lagoon.wetland_to_lagoon_maintenance_done"))
+    )
+  )
+),
+
+
+//LAGOON PREPARATION
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_lagoon_preparation_site_survey != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_lagoon_preparation_lagoon_preparation_site_survey_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_lagoon_preparation_lagoon_preparation_site_survey_done"),
+      field("Result__c", dataValue("form.lagoon_upgrading_and_preparation_check.lagoon_preparation.lagoon_preparation_site_survey_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_lagoon_preparation_site_layout != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_lagoon_preparation_lagoon_preparation_site_layout_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_lagoon_preparation_lagoon_preparation_site_layout_done"),
+      field("Result__c", dataValue("form.lagoon_upgrading_and_preparation_check.lagoon_preparation.lagoon_preparation_site_layout_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_lagoon_preparation_excavation != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_lagoon_preparation_lagoon_preparation_excavation_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_lagoon_preparation_lagoon_preparation_excavation_done"),
+      field("Result__c", dataValue("form.lagoon_upgrading_and_preparation_check.lagoon_preparation.lagoon_preparation_excavation_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_lagoon_preparation_fencing != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_lagoon_preparation_lagoon_preparation_fencing_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_lagoon_preparation_lagoon_preparation_fencing_done"),
+      field("Result__c", dataValue("form.lagoon_upgrading_and_preparation_check.lagoon_preparation.lagoon_preparation_fencing_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_lagoon_preparation_sign_posting != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_lagoon_preparation_lagoon_preparation_sign_posting_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_lagoon_preparation_lagoon_preparation_sign_posting_done"),
+      field("Result__c", dataValue("form.lagoon_upgrading_and_preparation_check.lagoon_preparation.lagoon_preparation_sign_posting_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_lagoon_preparation_plant_stabilizing_grasses != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_lagoon_preparation_lagoon_preparation_plant_stabilizing_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_lagoon_preparation_lagoon_preparation_plant_stabilizing_done"),
+      field("Result__c", dataValue("form.lagoon_upgrading_and_preparation_check.lagoon_preparation.lagoon_preparation_plant_stabilizing_done"))
+    )
+  )
+),
+
+
+//LAGOON UPGRADING
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_lagoon_upgrading_excavation != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_lagoon_upgrading_lagoon_upgrading_excavation_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_lagoon_upgrading_lagoon_upgrading_excavation_done"),
+      field("Result__c", dataValue("form.lagoon_upgrading_and_preparation_check.lagoon_upgrading.lagoon_upgrading_excavation_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_lagoon_upgrading_planting_stabilizing_grasses != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_lagoon_upgrading_lagoon_upgrading_planting_stabilizing_grasses_trees";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_lagoon_upgrading_lagoon_upgrading_planting_stabilizing_grasses_trees"),
+      field("Result__c", dataValue("form.lagoon_upgrading_and_preparation_check.lagoon_upgrading.lagoon_upgrading_planting_stabilizing_grasses_trees"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_lagoon_upgrading_lagoon_lining != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_lagoon_upgrading_lagoon_upgrading_lining_done";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_lagoon_upgrading_lagoon_upgrading_lining_done"),
+      field("Result__c", dataValue("form.lagoon_upgrading_and_preparation_check.lagoon_upgrading.lagoon_upgrading_lining_done"))
+    )
+  )
+),
+
+each(
+  "$.data",
+  upsertIf(
+    state.data.form.empty_lagoon_upgrading_contains_waste_water != 0,
+    "Observation_Result__c",
+    "Submission_ID__c",
+    fields(
+      field("Submission_ID__c", function(state){
+        return dataValue("id")(state) + "cwsp_lagoon_upgrading_lagoon_upgrading_to_hold_all_waster_water";
+      }),
+      relationship("Observation__r", "Submission_ID__c", dataValue("id")),
+      field("RecordTypeId", "01224000000oSGAAA2"),
+      relationship("Observation_Criterion__r", "Unique_Name__c", "cwsp_lagoon_upgrading_lagoon_upgrading_to_hold_all_waster_water"),
+      field("Result__c", dataValue("form.lagoon_upgrading_and_preparation_check.lagoon_upgrading.lagoon_upgrading_to_hold_all_waster_water"))
     )
   )
 );
