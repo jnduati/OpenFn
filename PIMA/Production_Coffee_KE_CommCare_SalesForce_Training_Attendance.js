@@ -56,7 +56,7 @@ beta.each(
           return {
             participant: pId,
             session: dataValue("form.training_session")(state),
-            submission: participant+session,
+            submission: dataValue("form.training_session")(state)+pId,
             sessionPhoto: dataValue("form.photo")(state)
           };
         }
