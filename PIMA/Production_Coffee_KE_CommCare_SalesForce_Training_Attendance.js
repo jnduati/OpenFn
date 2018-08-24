@@ -44,37 +44,6 @@ each(
         // the 'else' is unnecessary, return '' if there are no coords
         return '';
       })
-      
-      // field("Location_GPS__Latitude__s", function(state) {
-      //     var coordinates = '';
-      //     if(state.data.form.gps_coordinates !== undefined 
-      //     || state.data.form.gps_coordinates !== ""
-      //     || state.data.form.gps_coordinates !== null) {
-      //       coordinates = dataValue("form.gps_coordinates")(state).split(" ");
-      //       return coordinates[0];
-      //     }
-      // }),
-      // field("Location_GPS__Longitude__s", function(state) {
-      //     var coordinates = '';
-      //     if(state.data.form.gps_coordinates !== undefined 
-      //     || state.data.form.gps_coordinates !== ""
-      //     || state.data.form.gps_coordinates !== null) {
-      //     // if(dataValue("form.gps_coordinates")(state) !== undefined 
-      //     // || dataValue("form.gps_coordinates")(state) !== ""
-      //     // || dataValue("form.gps_coordinates")(state) !== null) {
-      //       coordinates = dataValue("form.gps_coordinates")(state).split(" ");
-      //       return coordinates[1];
-      //     }
-      // }),
-      // field("Altitude__c", function(state) {
-      //     var coordinates = '';
-      //     if(state.data.form.gps_coordinates !== undefined 
-      //     || state.data.form.gps_coordinates !== ""
-      //     || state.data.form.gps_coordinates !== null) {
-      //       coordinates = dataValue("form.gps_coordinates")(state).split(" ");
-      //       return coordinates[2];
-      //     }
-      // })
       )
     )
   );
@@ -87,14 +56,16 @@ beta.each(
           return {
             participant: pId,
             session: dataValue("form.training_session")(state),
+            submission: participant+session,
             sessionPhoto: dataValue("form.photo")(state)
           };
         }
       );
     }
   },
-  create("Attendance__c",
+  upsert("Attendance__c", "Submission_Id__c",
     fields(
+      field("Submission_Id__c", dataValue("submission")),
       field("Status__c", "Present"),
       relationship("Training_Session__r", "CommCare_Case_Id__c", dataValue("session")),
       relationship("Participant__r", "CommCare_Case_Id__c", dataValue("participant"))
