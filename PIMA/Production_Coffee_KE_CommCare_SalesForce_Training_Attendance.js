@@ -63,9 +63,9 @@ beta.each(
       );
     }
   },
-  upsert("Attendance__c", "Submission_Id__c",
+  upsert("Attendance__c", "Submission_ID__c",
     fields(
-      field("Submission_Id__c", dataValue("submission")),
+      field("Submission_ID__c", dataValue("submission")),
       field("Status__c", "Present"),
       relationship("Training_Session__r", "CommCare_Case_Id__c", dataValue("session")),
       relationship("Participant__r", "CommCare_Case_Id__c", dataValue("participant"))
