@@ -70,7 +70,7 @@ beta.each(
       field("Status__c", "Complete"),
       relationship("Training_Session__r", "CommCare_Case_Id__c", dataValue("session")),
       relationship("Client__r", "CommCare_Case_Id__c", dataValue("client")),
-      field("Comments__c", dataValue("task")),
+      field("Tasks_Assigned__c", dataValue("task")),
       field("Date__c", dataValue("date"))
   )
 ));
