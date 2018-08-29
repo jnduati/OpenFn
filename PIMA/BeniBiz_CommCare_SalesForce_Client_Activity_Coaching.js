@@ -11,17 +11,14 @@ each(
       field("RecordTypeId", "0121o00000115AWAAY"),
       field("Project_Staff__c", dataValue("form.trainer")),
       field("Date__c", dataValue("form.name_and_date_group.date")),
+      field("Tasks_Assigned__c", dataValue("form.tasks_assigned")),
+      field("Tasks_Completed__c", dataValue("form.tasks_completed")),
+      field("Topic_Covered__c", dataValue("form.topics_covered")),
       field("Comments__c", function(state) {
-        var topics = dataValue("form.topics_covered")(state);
-        var taskCompleted = dataValue("form.tasks_completed")(state);
-        var taskAssigned = dataValue("form.tasks_assigned")(state);
         var requests = dataValue("form.participant_requests")(state);
         var questions = dataValue("form.questions_comments_suggestions")(state);
         
-        var comment = "Topics Covered: "+topics+"\n"+"\n"+
-        "Tasks Completed: "+taskCompleted+"\n"+"\n"+
-        "Tasks Assigned: "+taskAssigned+"\n"+"\n"+
-        "Participant Requests: "+requests+"\n"+"\n"+
+        var comment = "Participant Requests: "+requests+"\n"+"\n"+
         "Questions/Comments/Concerns: "+questions;
         
         return comment;
