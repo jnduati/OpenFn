@@ -21,7 +21,7 @@ each(
       field("Result__c", dataValue("form.six_month_strategy")),
             
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_obstacle_strategy"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_obstacle_strategy"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -76,7 +76,7 @@ each(
       field("Result__c", dataValue("form.better_product")),
             
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_better_product"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_better_product"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -131,7 +131,7 @@ each(
       field("Result__c", dataValue("form.better_product")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_better_product"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_better_product"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -187,7 +187,7 @@ each(
       field("Result__c", dataValue("form.new_customers")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_new_customers"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_new_customers"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -243,7 +243,7 @@ each(
       field("Result__c", dataValue("form.regular_records")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_regular_records"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_regular_records"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -299,7 +299,7 @@ each(
       field("Result__c", dataValue("form.finance_records")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_finance_records"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_finance_records"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -355,7 +355,7 @@ each(
       field("Result__c", dataValue("form.sales_records")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_sales_records"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_sales_records"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -411,7 +411,7 @@ each(
       field("Result__c", dataValue("form.customer_segment")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_customer_segment"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_customer_segment"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -467,7 +467,7 @@ each(
       field("Result__c", dataValue("form.profit_and_loss")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_profit_and_loss"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_profit_and_loss"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -523,7 +523,7 @@ each(
       field("Result__c", dataValue("form.cost_of_product")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_cost_of_product"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_cost_of_product"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -579,7 +579,7 @@ each(
       field("Result__c", dataValue("form.profitable_price")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_profitable_price"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_profitable_price"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -635,7 +635,7 @@ each(
       field("Result__c", dataValue("form.profitable_product")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_profitable_product"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_profitable_product"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -691,7 +691,7 @@ each(
       field("Result__c", dataValue("form.salary")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_salary"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_salary"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -747,7 +747,7 @@ each(
       field("Result__c", dataValue("form.written_budget")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_written_budget"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_written_budget"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -803,7 +803,7 @@ each(
       field("Result__c", dataValue("form.loan_records")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_loan_records"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_loan_records"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -859,7 +859,7 @@ each(
       field("Result__c", dataValue("form.not_out_of_stock")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_not_out_of_stock"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_not_out_of_stock"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -915,7 +915,7 @@ each(
       field("Result__c", dataValue("form.regular_savings")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_regular_savings"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_regular_savings"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -970,7 +970,7 @@ each(
       field("Result__c", dataValue("form.commercial_documents")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_commercial_documents"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_commercial_documents"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1026,7 +1026,7 @@ each(
       field("Result__c", dataValue("form.know_customers")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_know_customers"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_know_customers"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1082,7 +1082,7 @@ each(
       field("Result__c", dataValue("form.know_products")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_know_products"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_know_products"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1137,7 +1137,7 @@ each(
       field("Result__c", dataValue("form.adapts_products")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_adapts_products"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_adapts_products"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1192,7 +1192,7 @@ each(
       field("Result__c", dataValue("form.promotes_products")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_promotes_products"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_promotes_products"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1247,7 +1247,7 @@ each(
       field("Result__c", dataValue("form.visit_competitor")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_visit_competitor"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_visit_competitor"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1302,7 +1302,7 @@ each(
       field("Result__c", dataValue("form.asks_customers_products")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_asks_customers_products"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_asks_customers_products"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1357,7 +1357,7 @@ each(
       field("Result__c", dataValue("form.asks_customers_why")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_asks_customers_why"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_asks_customers_why"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1412,7 +1412,7 @@ each(
       field("Result__c", dataValue("form.reviews_finances")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_reviews_finances"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_reviews_finances"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1467,7 +1467,7 @@ each(
       field("Result__c", dataValue("form.forecasts_sales")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_forecasts_sales"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_forecasts_sales"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1522,7 +1522,7 @@ each(
       field("Result__c", dataValue("form.income_statement")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_income_statement"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_income_statement"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1577,7 +1577,7 @@ each(
       field("Result__c", dataValue("form.cash_flow_statement")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_cash_flow_statement"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_cash_flow_statement"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1632,7 +1632,7 @@ each(
       field("Result__c", dataValue("form.growth_plan")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_growth_plan"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_growth_plan"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1687,7 +1687,7 @@ each(
       field("Result__c", dataValue("form.growth_financing")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_growth_financing"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_growth_financing"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
@@ -1742,7 +1742,7 @@ each(
       field("Result__c", dataValue("form.annual_report")),
       
       //PRACTICE GOES HERE
-      relationship("Practice__r", "Unique_Name__c", "benibiz_annual_report"),
+      relationship("Practice_Component__r", "Unique_Name__c", "benibiz_annual_report"),
       
       field("Comments__c", function(state) {
         var location = dataValue("form.location")(state);
