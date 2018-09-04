@@ -1773,7 +1773,7 @@ each(
         return '';
       })
     )
-  )),
+  ));
   
   
 // Version Control 3
