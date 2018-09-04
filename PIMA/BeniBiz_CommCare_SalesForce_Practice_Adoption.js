@@ -948,7 +948,8 @@ each(
     )
   )),
   
-  
+  each(
+  "$.data",
   // **benibiz_commercial_documents
   upsert(
     "Client_Activity__c", "Submission_ID__c",
@@ -1002,6 +1003,8 @@ each(
     )
   )),
   
+  each(
+  "$.data",
   
   // **benibiz_know_customers
   upsert(
@@ -1056,7 +1059,9 @@ each(
     )
   )),
   
-  
+ 
+  each(
+  "$.data",  
   // **benibiz_know_products
   upsert(
     "Client_Activity__c", "Submission_ID__c",
@@ -1110,7 +1115,8 @@ each(
     )
   )),
   
-  
+  each(
+  "$.data",  
   // **benibiz_adapts_products
   upsert(
     "Client_Activity__c", "Submission_ID__c",
@@ -1164,7 +1170,8 @@ each(
     )
   )),
   
-  
+  each(
+  "$.data",  
   // **benibiz_promotes_products
   upsert(
     "Client_Activity__c", "Submission_ID__c",
@@ -1218,7 +1225,8 @@ each(
     )
   )),
   
-  
+  each(
+  "$.data",  
   // **benibiz_visit_competitor
   upsert(
     "Client_Activity__c", "Submission_ID__c",
@@ -1272,7 +1280,8 @@ each(
     )
   )),
   
-  
+  each(
+  "$.data",  
   // **benibiz_asks_customers_products
   upsert(
     "Client_Activity__c", "Submission_ID__c",
@@ -1326,7 +1335,8 @@ each(
     )
   )),
   
-  
+  each(
+  "$.data",  
   // **benibiz_asks_customers_why
   upsert(
     "Client_Activity__c", "Submission_ID__c",
@@ -1380,7 +1390,8 @@ each(
     )
   )),
   
-  
+  each(
+  "$.data",  
   // **benibiz_reviews_finances
   upsert(
     "Client_Activity__c", "Submission_ID__c",
@@ -1434,7 +1445,8 @@ each(
     )
   )),
   
-  
+  each(
+  "$.data",  
   // **benibiz_forecasts_sales
   upsert(
     "Client_Activity__c", "Submission_ID__c",
@@ -1488,7 +1500,8 @@ each(
     )
   )),
   
-  
+  each(
+  "$.data",  
   // **benibiz_income_statement
   upsert(
     "Client_Activity__c", "Submission_ID__c",
@@ -1542,7 +1555,8 @@ each(
     )
   )),
   
-  
+  each(
+  "$.data",  
   // **benibiz_cash_flow_statement
   upsert(
     "Client_Activity__c", "Submission_ID__c",
@@ -1596,7 +1610,8 @@ each(
     )
   )),
   
-  
+   each(
+  "$.data", 
   // **benibiz_growth_plan
   upsert(
     "Client_Activity__c", "Submission_ID__c",
@@ -1650,7 +1665,8 @@ each(
     )
   )),
   
-  
+  each(
+  "$.data",  
   // **benibiz_growth_financing
   upsert(
     "Client_Activity__c", "Submission_ID__c",
@@ -1704,7 +1720,8 @@ each(
     )
   )),
   
-  
+  each(
+  "$.data",  
   // **benibiz_annual_report
   upsert(
     "Client_Activity__c", "Submission_ID__c",
