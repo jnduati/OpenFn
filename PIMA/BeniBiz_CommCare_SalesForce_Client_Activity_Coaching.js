@@ -15,6 +15,7 @@ each(
       field("Tasks_Completed__c", dataValue("form.tasks_completed")),
       field("Topic_Covered__c", dataValue("form.topics_covered")),
       field("Client_Request__c", dataValue("form.participant_requests")),
+      field("Training_Session__c", dataValue("form.name_and_date_group.training_module")),
       field("Comments__c", dataValue("form.questions_comments_suggestions")),
       field("Status__c", "Complete"),
       field("Duration__c", dataValue("form.duration")),
