@@ -55,7 +55,7 @@ each(
               return name;
             },
             "n0:owner_id": dataValue("ccMobileWorkerGroupId")(state),
-            "n0:case_type": "coffee_ug_agr_staff"
+            "n0:case_type": "coffee-ug-staff"
           },
           "n0:update": {
             "n0:Case_Id": dataValue("commCareCaseId")(state),
