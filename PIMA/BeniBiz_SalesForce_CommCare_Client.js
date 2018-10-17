@@ -34,12 +34,12 @@ each(
       field("Farmer_Id", dataValue("tnsId")),
       field("Parent_Id", dataValue("trainingGroupId")),
       field("Status", dataValue("status")),
-      field("Case_Id", dataValue("commCareCaseId")),
+      field("Case_Id", dataValue("participantId")),
       
       field("n0:case", function(state) {
         return {
           "@": {
-            "case_id": dataValue("commCareCaseId")(state),
+            "case_id": dataValue("participantId")(state),
             "date_modified": new Date().toISOString(),
             "user_id": "e926526fc13b126fffdb6d001f25b269",
             "xmlns:n0": "http://commcarehq.org/case/transaction/v2"
