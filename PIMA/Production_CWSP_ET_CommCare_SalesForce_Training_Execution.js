@@ -5,6 +5,7 @@ each(
   upsert("Training_Session__c", "CommCare_Case_Id__c",
     fields(
       field("CommCare_Case_Id__c", dataValue("form.training_session")),
+      field("Updated_from_CommCare__c", true),
       field("Trainer__c", dataValue("form.trainer")),
       field("Number_in_Attendance__c", dataValue("form.participant_count.total_participant_in_attendance")),
       field("Male_Attendance__c", dataValue("form.participant_count.male_participants_in_attendance")),
