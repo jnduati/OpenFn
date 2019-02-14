@@ -9,6 +9,8 @@ each(
       //CommCare case Id (unique lookup value).
       field("CommCare_Case_Id__c", dataValue("form.training_session")),
       
+      field("Updated_from_CommCare__c", true),
+      
       //Trainer that completed the training session, this should be the Salesforce 18 digit Id.
       field("Trainer__c", dataValue("form.trainer")),
       
