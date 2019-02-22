@@ -74,6 +74,8 @@ each(
             "n0:TNS_Id": dataValue("tnsId")(state),
             "n0:Current_Module": dataValue("currentModule")(state),
             "n0:Current_Module_Name": dataValue("currentModuleName")(state),
+            "n0:Previous_Module": dataValue("previousModule")(state),
+            "n0:Previous_Module_Name": dataValue("previousModuleName")(state),
             "n0:Salesforce_Staff_Id": dataValue("staffId")(state)
           }
         };
