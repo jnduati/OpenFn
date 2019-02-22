@@ -25,6 +25,8 @@ each(
       field("Case_Id", dataValue("commCareCaseId")),
       field("Current_Module", dataValue("currentModule")),
       field("Current_Module_Name", dataValue("currentModuleName")),
+      field("Previous_Module", dataValue("previousModule")),
+      field("Previous_Module_Name", dataValue("previousModuleName")),
       field("Name_id_concat", function(state){
         var name = '';
         if(dataValue("staffName")(state) !== null) {
