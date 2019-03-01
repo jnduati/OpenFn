@@ -20,7 +20,7 @@ each(
         }
         return name;
       }),
-      field("Status", dataValue("staffStatus")),
+      field("Staff_Status", dataValue("staffStatus")),
       field("TNS_Id", dataValue("tnsId")),
       field("City", dataValue("locationName")),
       field("Role", dataValue("roleForCommCare")),
@@ -50,7 +50,7 @@ each(
             "n0:Case_Id": dataValue("commCareCaseId")(state),
             "n0:Role": dataValue("roleForCommCare")(state),
             "n0:City": dataValue("locationName")(state),
-            "n0:Status": dataValue("staffStatus")(state),
+            "n0:Staff_Status": dataValue("staffStatus")(state),
             "n0:TNS_Id": dataValue("tnsId")(state),
             "n0:Salesforce_Staff_Id": dataValue("staffId")(state),
             "n0:Project": dataValue("projectUniqueId")(state),
