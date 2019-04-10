@@ -1108,7 +1108,7 @@ each(
 each(
   "$.data",
   upsertIf(
-    state.data.form.form.empty_wetland_maintenance_infilling != 0,
+    state.data.form.empty_wetland_maintenance_infilling != 0,
     "Observation_Result__c",
     "Submission_ID__c",
     fields(
