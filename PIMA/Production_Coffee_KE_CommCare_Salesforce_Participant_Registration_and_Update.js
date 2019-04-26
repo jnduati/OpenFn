@@ -39,6 +39,7 @@ beta.each(
         field("Last_Name__c", dataValue("form.Last_Name")),
         field("Gender__c", dataValue("form.Gender")),
         field("Status__c", dataValue("form.Status")),
+        field("Farm_Size__c", dataValue("form.Number_of_Trees")),
         field("Sent_to_OpenFn_Status__c", "Complete"),
         field("Phone_Number__c", dataValue("form.Phone_Number")),
         field("Other_ID_Number__c", dataValue("form.Cooperative_Membership_Number")),
@@ -76,6 +77,7 @@ beta.each(
         field("Last_Name__c", dataValue("form.Last_Name")),
         field("Gender__c", dataValue("form.Gender")),
         field("Status__c", dataValue("form.Status")),
+        field("Farm_Size__c", dataValue("form.Number_of_Trees")),
         field("Sent_to_OpenFn_Status__c", "Complete"),
         field("Phone_Number__c", dataValue("form.Phone_Number")),
         field("Other_ID_Number__c", dataValue("form.Cooperative_Membership_Number")),
@@ -111,6 +113,7 @@ beta.each(
         field("Middle_Name__c", dataValue("form.Middle_Name")),
         field("Last_Name__c", dataValue("form.Last_Name")),
         field("Gender__c", dataValue("form.Gender")),
+        field("Farm_Size__c", dataValue("form.Number_of_Trees")),
         field("Phone_Number__c", dataValue("form.Phone_Number")),
         field("Other_ID_Number__c", dataValue("form.Cooperative_Membership_Number"))
       )
